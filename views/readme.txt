@@ -1,0 +1,1 @@
+This is a placeholder file for views folder where we will put all our html templates.

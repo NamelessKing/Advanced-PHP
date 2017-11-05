@@ -1,0 +1,1 @@
+This is a placeholder file for js folder where we will put all our javascript code.
