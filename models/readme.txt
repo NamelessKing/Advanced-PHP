@@ -1,1 +1,0 @@
-This is a placeholder file for models folder where we will put all our models classes.
