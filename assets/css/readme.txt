@@ -1,1 +1,0 @@
-This is a placeholder file for css folder where we will put all our css code.
