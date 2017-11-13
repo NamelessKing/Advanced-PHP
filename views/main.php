@@ -47,6 +47,10 @@
     <main role="main" class="container">
 
       <div class="row">
+        <?php Messages::display(); ?>
+      </div>
+
+      <div class="row">
 
         <?php require_once($view); ?>
 
