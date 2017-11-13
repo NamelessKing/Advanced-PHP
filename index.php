@@ -10,6 +10,7 @@ require_once("controllers/home.php");
 require_once("controllers/users.php");
 
 require_once("models/home.php");
+require_once("models/user.php");
 
 $bootstrap = new Bootstrap($_GET);
 

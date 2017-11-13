@@ -18,7 +18,7 @@ abstract class Model {
 				case is_int($value):
 					$type = PDO::PARAM_INT;
 					break;
-				case is_boo($value):
+				case is_bool($value):
 					$type = PDO::PARAM_BOOL;
 					break;
 				case is_null($value):
@@ -40,5 +40,9 @@ abstract class Model {
 	public function resultSet() {
 		$this->execute();
 		return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public function lastInsertId() {
+		return $this->dbh->lastInsertId();
 	}
 }
