@@ -17,13 +17,15 @@ class UserModel extends Model {
 			$this->validateEmail($_POST['email']);
 			$this->validatePassword($_POST['password'], $_POST['cpassword']);
 
+			$password = md5($_POST['password']);
+
 			if($this->errorName == false && $this->errorEmail == false && $this->errorPassword == false) {
 				// INSERT INTO DATABASE
 
 				$this->query("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
 				$this->bind(":name", $_POST['name']);
 				$this->bind(":email", $_POST['email']);
-				$this->bind(":password", $_POST['password']);
+				$this->bind(":password", $password);
 				$this->execute();
 
 				// We need to verify that this worked or not.
@@ -36,6 +38,30 @@ class UserModel extends Model {
 			}
 
 			
+		}
+		return null;
+	}
+
+	public function login() {
+		$post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+		$password = md5($post['password']); 
+
+		if($post['email'] != null) {
+			$this->query("SELECT * FROM users WHERE email=:email AND password=:password");
+			$this->bind(":email", $post['email']);
+			$this->bind(":password", $password);
+
+			$row = $this->getSingleRow();
+			if($row) {
+				$_SESSION['loggedIn'] = true;
+				$_SESSION['user'] = array(
+					"name" => $row['name'],
+					"email" => $row['email']
+				);
+				header("Location: " . ROOT_URL);
+			} else {
+				Messages::setMessage("Incorrect Email/Password.", "error");
+			}
 		}
 		return null;
 	}

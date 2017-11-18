@@ -26,8 +26,13 @@
           <nav class="nav">
             <a class="nav-link <?php if($_GET['controller'] == "") { echo 'active'; } ?>" href="<?php echo ROOT_URL; ?>">Home</a>
             <a class="nav-link <?php if($_GET['controller'] == "questions" && $_GET['action'] == '') { echo 'active'; } ?>" href="<?php echo ROOT_URL; ?>questions">Ask Question</a>
-            <a class="nav-link <?php if($_GET['controller'] == "users" && $_GET['action'] == 'login') { echo 'active'; } ?>" href="<?php echo ROOT_URL; ?>users/login">Login</a>
-            <a class="nav-link <?php if($_GET['controller'] == "users" && $_GET['action'] == 'register') { echo 'active'; } ?>" href="<?php echo ROOT_URL; ?>users/register">Register</a>
+            <?php if(isset($_SESSION['loggedIn'])) : ?>
+            <a class="nav-link <?php if($_GET['controller'] == "users" && $_GET['action'] == 'logout') { echo 'active'; } ?>" href="<?php echo ROOT_URL; ?>users/logout">Welcome <?php echo $_SESSION['user']['name']; ?> | Logout</a>
+            <?php else : ?>
+           <a class="nav-link <?php if($_GET['controller'] == "users" && $_GET['action'] == 'login') { echo 'active'; } ?>" href="<?php echo ROOT_URL; ?>users/login">Login</a>
+                      <a class="nav-link <?php if($_GET['controller'] == "users" && $_GET['action'] == 'register') { echo 'active'; } ?>" href="<?php echo ROOT_URL; ?>users/register">Register</a>
+          <?php endif; ?>
+           
           </nav>
         </div>
       </div>
