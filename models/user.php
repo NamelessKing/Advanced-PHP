@@ -55,6 +55,7 @@ class UserModel extends Model {
 			if($row) {
 				$_SESSION['loggedIn'] = true;
 				$_SESSION['user'] = array(
+					"id" => $row['id'],
 					"name" => $row['name'],
 					"email" => $row['email']
 				);

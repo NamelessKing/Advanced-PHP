@@ -25,7 +25,7 @@
         <div class="container">
           <nav class="nav">
             <a class="nav-link <?php if($_GET['controller'] == "") { echo 'active'; } ?>" href="<?php echo ROOT_URL; ?>">Home</a>
-            <a class="nav-link <?php if($_GET['controller'] == "questions" && $_GET['action'] == '') { echo 'active'; } ?>" href="<?php echo ROOT_URL; ?>questions">Ask Question</a>
+            <a class="nav-link <?php if($_GET['controller'] == "questions" && $_GET['action'] == '') { echo 'active'; } ?>" href="<?php echo ROOT_URL; ?>questions">Questions</a>
             <?php if(isset($_SESSION['loggedIn'])) : ?>
             <a class="nav-link <?php if($_GET['controller'] == "users" && $_GET['action'] == 'logout') { echo 'active'; } ?>" href="<?php echo ROOT_URL; ?>users/logout">Welcome <?php echo $_SESSION['user']['name']; ?> | Logout</a>
             <?php else : ?>

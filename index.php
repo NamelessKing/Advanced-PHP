@@ -9,9 +9,11 @@ require_once("classes/Model.php");
 
 require_once("controllers/home.php");
 require_once("controllers/users.php");
+require_once("controllers/questions.php");
 
 require_once("models/home.php");
 require_once("models/user.php");
+require_once("models/question.php");
 
 $bootstrap = new Bootstrap($_GET);
 

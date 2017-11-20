@@ -18,6 +18,8 @@ Advanced PHP - Part-6 - Message Class & Registration Validation - https://youtu.
 
 Advanced PHP - Part-7 - Login - https://youtu.be/9zBXy7zzjnI
 
+Advanced PHP - Part-8 - Questions Controller & Model - https://youtu.be/6guid8kS6fM
+
 # Contact
 Feel free to contact me through my website http://learningfromscratch.online/ 
 >If you are following this tutorial series I would appritiate if you can subscribe and like my videos as it will keep me motivated to share my knowledge with you all!
