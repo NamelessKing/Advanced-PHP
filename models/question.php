@@ -2,7 +2,7 @@
 
 class QuestionModel extends Model {
 	public function index() {
-		$this->query("SELECT * FROM questions ORDER BY createdAt DESC");
+		$this->query("SELECT questions.*, users.name FROM questions INNER JOIN users ON questions.id_user=users.id ORDER BY createdAt DESC");
 		$rows = $this->resultSet();
 		return $rows;
 	}
@@ -22,5 +22,12 @@ class QuestionModel extends Model {
 			}
 		}
 		return null;
+	}
+
+	public function show($id) {
+		$this->query("SELECT questions.*, users.name FROM questions INNER JOIN users ON questions.id_user=users.id WHERE questions.id=:id");
+		$this->bind(":id", $id);
+		$row = $this->getSingleRow();
+		return $row;
 	}
 }

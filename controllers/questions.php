@@ -4,7 +4,13 @@ class questions extends Controller {
 
 	protected function index() {
 		$viewModel = new QuestionModel();
-		$this->returnView($viewModel->index(), true);
+
+		if($this->request['id']) {
+			$this->action = "show";
+			$this->returnView($viewModel->show($this->request['id']), true);
+		} else {
+			$this->returnView($viewModel->index(), true);
+		}
 	}
 
 	protected function add() {
