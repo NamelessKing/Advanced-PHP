@@ -7,7 +7,10 @@ class questions extends Controller {
 
 		if($this->request['id']) {
 			$this->action = "show";
-			$this->returnView($viewModel->show($this->request['id']), true);
+			$show = $viewModel->show($this->request['id']);
+			$answers = $viewModel->showAnswers($this->request['id']);
+			$viewModel = array_merge($show, $answers);
+			$this->returnView($viewModel, true);
 		} else {
 			$this->returnView($viewModel->index(), true);
 		}
@@ -19,5 +22,14 @@ class questions extends Controller {
 		}
 		$viewModel = new QuestionModel();
 		$this->returnView($viewModel->add(), true);
+	}
+
+	protected function edit() {
+		$viewModel = new QuestionModel();
+		if($this->request['id']) {
+			$this->returnView($viewModel->edit($this->request['id']), true);
+		} else {
+			header("Location: " . ROOT_URL . 'questions');
+		}
 	}
 }

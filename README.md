@@ -22,6 +22,8 @@ Advanced PHP - Part-8 - Questions Controller & Model - https://youtu.be/6guid8kS
 
 Advanced PHP - Part-9 - View Questions - https://youtu.be/4GH83lWA0OU
 
+Advanced PHP - Part 10 - Adding Answers & Edit Questions - https://youtu.be/zbtMsKmlPUk
+
 # Contact
 Feel free to contact me through my website http://learningfromscratch.online/
 >If you are following this tutorial series I would appreciate if you can subscribe and like my videos as it will keep me motivated to share my knowledge with you all!
