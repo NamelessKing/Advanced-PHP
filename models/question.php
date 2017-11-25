@@ -73,4 +73,23 @@ class QuestionModel extends Model {
 		}
 
 	}
+
+	public function delete($id) {
+		$this->query("SELECT * FROM questions WHERE id=:id AND id_user=:id_user");
+		$this->bind(":id", $id);
+		$this->bind(":id_user", $_SESSION['user']['id']);
+		if($this->getSingleRow()) {
+			$this->query("DELETE FROM questions WHERE id=:id");
+			$this->bind(":id", $id);
+			$this->execute();
+
+			$this->query("DELETE FROM answers WHERE id_question=:id");
+			$this->bind(":id", $id);
+			$this->execute();
+			
+			header("Location: " . ROOT_URL . "questions");
+		} else {
+			header("Location: " . ROOT_URL . "questions/" . $id);
+		}
+	}
 }

@@ -1,24 +1,18 @@
-<?php if(isset($_SESSION['loggedIn'])) : ?>
-<div class="blog-header">
-	<div class="container">
-	  <h1 class="blog-title">Ask A Question?</h1>
-	  <a href="<?php echo ROOT_URL; ?>questions/add" class="btn btn-primary">Ask Question</a>
-	</div>
-</div>
-<?php endif; ?>
-
 <div class="container">
-		<?php foreach ($viewModel as $item) : ?>
-			<div class="row">
-		    <div class="blog-post">
-		      <h3 class="blog-post-title"><?php echo $item['question']; ?></h3>
-		      <p class="blog-post-meta"><?php echo date('d-M-Y', strtotime($item['createdAt'])); ?> by <a href="#"><?php echo $item['name']; ?></a></p>
-					<p>
-						<?php
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <?php foreach ($viewModel as $item) : ?>
+      <div class="post-preview">
+        <a href="<?php echo ROOT_URL; ?>questions/<?php echo $item['id']; ?>">
+          <h2 class="post-title">
+            <?php echo $item['question']; ?>
+          </h2>
+          <h3 class="post-subtitle">
+            <?php
 							$tags = $item['tags'];
 							$tagsArray = explode(', ', $tags);
 
-							$colorArray = ['badge-primary', 'badge-secondary', 'badge-danger', 'badge-warning', 'badge-info'];
+							$colorArray = ['badge-primary', 'badge-secondary', 'badge-danger', 'badge-warning', 'badge-info', 'badge-success', 'badge-dark'];
 
 
 
@@ -26,12 +20,16 @@
 
 								$randIndex = array_rand($colorArray);
 						?>
-						<span class="badge badge-pill <?php echo $colorArray[$randIndex]; ?>"><?php echo $tag; ?></span>
-					<?php endforeach; ?>
-					</p>
-				  <a href="<?php echo ROOT_URL; ?>questions/<?php echo $item['id']; ?>" class="btn btn-primary btn-sm">Read More</a>
-		      <hr>
-		    </div><!-- /.blog-post -->
-			</div>
-	    <?php endforeach; ?>
+            <span class="badge badge-pill <?php echo $colorArray[$randIndex]; ?>"><?php echo $tag; ?></span>
+            <?php endforeach; ?>
+          </h3>
+        </a>
+        <p class="post-meta">Posted by
+          <a href="#"><?php echo $item['name']; ?></a>
+          on <?php echo date('d-M-Y', strtotime($item['createdAt'])); ?></p>
+      </div>
+      <hr>
+      <?php endforeach; ?>
+    </div>
+  </div>
 </div>

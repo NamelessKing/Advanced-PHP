@@ -1,5 +1,4 @@
 <?php
-
 class home extends Controller {
 	protected function index() {
 		$viewModel = new HomeModel();

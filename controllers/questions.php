@@ -32,4 +32,14 @@ class questions extends Controller {
 			header("Location: " . ROOT_URL . 'questions');
 		}
 	}
+
+	protected function delete() {
+		$viewModel = new QuestionModel();
+		if($this->request['id']) {
+			$viewModel->delete($this->request['id']);
+			// header("Location: " . ROOT_URL . 'questions');
+		} else {
+			header("Location: " . ROOT_URL . 'questions');
+		}
+	}
 }
